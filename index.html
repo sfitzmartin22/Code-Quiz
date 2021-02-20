@@ -9,8 +9,8 @@
 </head>
 <body>
     <div class="highscorecontainer">
-        <button id="highscorelink" class="hide">View High Scores</button></div>
-            <h2 id="highscore" class="hide">High Scores</h2>
+        <h2 id="highscore" class="hide">High Scores</h2>
+        <button id="startover" class="hide">Take Quiz Again</button></div>
     </div>
     <div class="timer"></div>
     <div class="quiz-container">
@@ -22,8 +22,17 @@
         <div class="start-next">
           <button id="start-btn" class="start-btn btn">Start</button>
           <button id="next-btn" class="next-btn btn hide">Next</button>
+        </div>     
+         <div id="results" class="hide">
+        <h2>The Quiz has been completed!</h2>
+        <p>Your final score is<span id="final-score">.</span></p>
+        <p>Enter the name you would like to log your score on the leaderboard with (10 character limit): <input type="text" id="userid" max="10"/>
+        <button id="submit">Submit results</button>
+        <button id="highscorelink">View High Scores</button>
+        </p>   
         </div>
       </div>
+
         <script src="Assets/script.js"></script>
 </body>
 </html>

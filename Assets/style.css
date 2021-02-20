@@ -9,11 +9,11 @@ body {
 
 
 .quiz-container {
-width: 33%;
+width: 50%;
 background-color: cadetblue;
 display: flex;
 justify-content: center;
-padding: 15px;
+padding: 60px;
 color: black;
 }
 
@@ -34,3 +34,9 @@ color: black;
   .hide {
       display: none;
   }
+
+#answers {
+    padding: 5x;
+    display: flex;
+    justify-content: center;
+}
