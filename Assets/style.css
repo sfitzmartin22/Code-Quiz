@@ -9,13 +9,20 @@ body {
 
 
 .quiz-container {
-width: 50%;
 background-color: cadetblue;
 display: flex;
 justify-content: center;
 padding: 60px;
 color: black;
 }
+
+.highscorecontainer {
+    background-color:green;
+    display: flex;
+    justify-content: center;
+    padding: 60px;
+    color: black;
+    }
 
 
 .btn-grid {

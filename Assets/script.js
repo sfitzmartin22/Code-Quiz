@@ -1,3 +1,4 @@
+//global variables used for the project //
 var secondsLeft;
 var timerEl = document.querySelector(".timer");
 var highScoreList = document.querySelector("#highscore");
@@ -12,16 +13,31 @@ var userIDEl = document.querySelector("#userid")
 var HSL = document.querySelector("#highscorelink")
 var startOver = document.querySelector("#startover")
 
+// event listeners used for the project //
 startB.addEventListener("click", startGame)
 submitRButton.addEventListener("click", saveR)
 HSL.addEventListener("click", ViewHighScores)
 startOver.addEventListener("click", reload)
 
+// moving high scores out of local storage and creating list to append to High Score list //
+function printHighScores() {
+var highScores = JSON.parse(window.localStorage.getItem("highscores")) || {};
+highScores.sort(function(a,b) {
+    return b.score - a.score;
+});    
 
+highScores.forEach(function(scoreObject) {
+    var listtag = document.createElement("li");
+    listtag.textContent = scoreObject.userID + ": " + scoreObject.score + " seconds";
+    highScoreList.appendChild(listtag);
+});
+}
+
+// saving userID and scores to local storage //
 function saveR() {
     userID = userIDEl.value 
-    var highScores = JSON.parse(localStorage.getItem("highscores"))  || [];
-     var scoreObject = {
+    var highScores = JSON.parse(localStorage.getItem("highscores"))  || []; 
+     var scoreObject = {     
          score: secondsLeft,
          userID: userID
      };
@@ -29,41 +45,47 @@ function saveR() {
      highScores.push(scoreObject);
      localStorage.setItem("highscores", JSON.stringify(highScores));
      submitR.setAttribute("class", "hide")
+     timerEl.setAttribute("class","hide")
      HSL.removeAttribute("class", "hide")
-    highScoreList.removeAttribute("class", "hide")
-    startOver.removeAttribute("class", "hide")
-
+     highScoreList.removeAttribute("class", "hide")
+     printHighScores();
+     startOver.removeAttribute("class", "hide")
  } 
 
+// formatting for the high score page //
  function ViewHighScores(){
-
-    HSL.removeAttribute("class", "hide")
-    highScoreList.removeAttribute("class", "hide")
-    startOver.removeAttribute("class", "hide")
+    timerEl.setAttribute("class","hide") // hide timer //
+    submitR.setAttribute("class", "hide") // hide submit button //
+    HSL.removeAttribute("class", "hide") //unhide High Score Header/
+    highScoreList.removeAttribute("class", "hide") // unhide high score list //
+    printHighScores(); // printing high score list items to page //
+    startOver.removeAttribute("class", "hide") // unhide take quiz again button //
  }
 
 function startGame () {
-startB.setAttribute("class", "hide")
-startQ.removeAttribute("class", "hide")
-timer();
-populateQuestion();
+startB.setAttribute("class", "hide")  // hide start button //
+startQ.removeAttribute("class", "hide") // unhide question secton //
+timer(); // call timer //
+populateQuestion(); // populate question //
 }
 
+// reload webpage to start the quiz again //
 function reload() {
-    location.reload();
+    location.reload(); 
 }
 
+// move to the next question and penalize for missed questions //
 function questionClick() {
     if (this.value !== questionBucket[currentQuestionArray].answer && currentQuestionArray < 6) {
 
     if (secondsLeft < 10) {
-        clearInterval(secondsLeft);
+        clearInterval(timer);
         secondsLeft = 0;
         timerEl.textContent = secondsLeft + " seconds remaining";
         endQuiz;
         return
     } else {
-    secondsLeft-= 30;
+    secondsLeft-= 10;
     }
     }
     timerEl.textContent = secondsLeft + " seconds remaining"; 
@@ -79,13 +101,14 @@ function questionClick() {
     }
 }        
 
+// end quiz section //
 function endQuiz() {
     startQ.setAttribute("class", "hide");
     submitR.removeAttribute("class", "hide");
 }
 
 
-
+// display selected question on the screen and append info/
 function populateQuestion(){
     var questionScreen = questionBucket[currentQuestionArray];
     var titleEl = document.querySelector("#questions");
@@ -104,6 +127,7 @@ function populateQuestion(){
 
 }
 
+// list of questions //
 var questionBucket = [
     {
         question: "What are variables used for in JavaScript",
@@ -137,6 +161,7 @@ var questionBucket = [
 
 ]
 
+//timer function //
 function timer() {
     secondsLeft = 60;
         timerStart = setInterval(function() {
