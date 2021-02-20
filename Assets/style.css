@@ -9,7 +9,6 @@ body {
 
 
 .quiz-container {
-background-color: cadetblue;
 display: flex;
 justify-content: center;
 padding: 60px;
@@ -17,7 +16,6 @@ color: black;
 }
 
 .highscorecontainer {
-    background-color:green;
     display: flex;
     justify-content: center;
     padding: 60px;
@@ -25,12 +23,6 @@ color: black;
     }
 
 
-.btn-grid {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 15px;
-    margin: 25px 0;
-  }
 
   .start-next {
       display: flex;
