@@ -8,12 +8,26 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <button id="highscorelink">View High Scores</button></div>
-        <div class="timer"></div>
-        <div class="questions">
-            <h2 id=highscore>High Scores</h2>
+    <div class="highscorecontainer">
+        <button id="highscorelink" class="hide">View High Scores</button></div>
+            <h2 id="highscore" class="hide">High Scores</h2>
+    </div>
+    <div class="timer"></div>
+    <div class="quiz-container">
+        <div id="question-container" class="hide">
+          <div id="question">Question</div>
+          <div id="answer-buttons" class="btn-grid">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
+          </div>
         </div>
+        <div class="start-next">
+          <button id="start-btn" class="start-btn btn">Start</button>
+          <button id="next-btn" class="next-btn btn hide">Next</button>
+        </div>
+      </div>
         <script src="Assets/script.js"></script>
 </body>
 </html>

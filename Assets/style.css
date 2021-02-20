@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(235, 154, 3);
+}
+
+
+.quiz-container {
+width: 33%;
+background-color: cadetblue;
+display: flex;
+justify-content: center;
+padding: 15px;
+color: black;
+}
+
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 15px;
+    margin: 25px 0;
+  }
+
+  .start-next {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .hide {
+      display: none;
+  }
